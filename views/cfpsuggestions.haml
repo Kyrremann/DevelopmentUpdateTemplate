@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Ciber Developer Update
+    = haml :"templates/header_imports"
+  %body
+    = haml :"templates/nav"
+    .container
+      %h3
+        Suggestions for CDU 2015 Spring Edition
+      .row
+        - if @suggestions.empty?
+          No suggestions yet
+
+        - @suggestions.each do | suggestion |
+          %div.suggestion{:style => "background: #eee;"}
+            %strong
+              = suggestion.title
+            %br
+            = suggestion.description.gsub(/\r\n/, "<br>")
+            %br
+            %br
+            %strong Format:
+            = suggestion.format
+            %br
+            %strong Track:
+            = suggestion.track
+            %br
+            %strong Speaker:
+            = suggestion.speaker
+            %br
+            .padding
