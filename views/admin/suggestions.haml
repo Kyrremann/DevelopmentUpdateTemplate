@@ -4,7 +4,7 @@
     %title Ciber Developer Update
     = haml :"templates/header_imports"
   %body
-    = haml :"templates/nav"
+    = haml :"admin/nav"
     .container
       %h3
         Suggestions for CDU 2015 Spring Edition
@@ -29,4 +29,22 @@
             %strong Speaker:
             = suggestion.speaker
             %br
+            .padding
+            %form.form{:method => "post", :role => "form"}
+              %fieldset
+                %label.control-label{:for => "site_mode"}
+                  Pick track:
+                %select#format.input-xlarge{:name => "config[site_mode]"}
+                  %option{:value => "no_value"} No track
+                  - @tracks.each do | track |
+                    %option{:value => track.title}
+                      = track.title
+
+                %label.control-label{:for => ""}
+                  Set time:
+                  %input{:type => "time"}
+
+                %label.control-label{:for => "submit"}
+                %button#submit.btn.btn-default{:name => "submit"}
+                  Add to track
             .padding

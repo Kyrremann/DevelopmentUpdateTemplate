@@ -7,6 +7,8 @@ require_relative 'config/app_config.rb'
 class DUT < Sinatra::Application
   register Sinatra::R18n
 
+  set :bind, '0.0.0.0'
+
   enable :sessions
 
   configure :production do

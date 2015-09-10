@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908180239) do
+ActiveRecord::Schema.define(version: 20150909190504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "talk_id"
+    t.string   "comment"
+    t.string   "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["talk_id"], name: "index_comments_on_talk_id", using: :btree
+
+  create_table "configurations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "suggestions", force: :cascade do |t|
     t.string   "title"
@@ -24,6 +41,27 @@ ActiveRecord::Schema.define(version: 20150908180239) do
     t.string   "track"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "talks", force: :cascade do |t|
+    t.integer  "track_id"
+    t.string   "title"
+    t.string   "description"
+    t.string   "speaker"
+    t.string   "format"
+    t.time     "time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "talks", ["track_id"], name: "index_talks_on_track_id", using: :btree
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "title"
+    t.date     "date"
+    t.string   "room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

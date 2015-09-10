@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title
+      = t.title
+    = haml :"templates/header_imports"
+    -green = '#821CB4'
+    -purple = '#B3DB11'
+  %body
+    = haml :"admin/nav"
+    .container
+      %table{:class => "pure-table"}
+        %thead
+          %tr
+            %th #
+            %th Title
+            %th Room
+            %th date
+            %th Used
+        %tbody
+          - @tracks.each do | track |
+            %tr
+              %th #{track.title}
+              %th #{track.room}
+              %th #{track.date}
+              %th ?

@@ -7,7 +7,7 @@
     -green = '#821CB4'
     -purple = '#B3DB11'
   %body
-    = haml :"templates/nav"
+    = haml :"admin/nav"
     .container
       %p
         = t.admin.content
@@ -18,9 +18,9 @@
             %label.control-label{:for => "site_mode"}
               = t.admin.form.site_mode
             .controls
-              %select#format.input-xlarge{:name => "site_mode", :style => "width: 100%;"}
-                %option{:value => "cfp"} CFP mode
-                %option{:value => "track"} Track mode
+              %select#format.input-xlarge{:name => "config[site_mode]", :style => "width: 100%;"}
+                %option{:value => "cfp", :selected => @configurations["site_mode"] == "cfp"} CFP mode
+                %option{:value => "track", :selected => @configurations["site_mode"] == "track"} Track mode
 
           .control-group
             %label.control-label{:for => "submit"}

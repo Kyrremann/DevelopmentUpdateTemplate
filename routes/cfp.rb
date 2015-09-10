@@ -1,6 +1,8 @@
 class DUT < Sinatra::Application
   get '/cfp' do
-    haml :cfp
+    p params
+    @errors = {}
+    haml :"cfp/index"
   end
 
   post '/cfp' do
@@ -8,12 +10,13 @@ class DUT < Sinatra::Application
     if @suggestion.save
       redirect 'cfp/suggestions'
     else
-      haml :cfp
+      p @suggestion.errors.messages
+      redirect 'cfp'
     end
   end
 
   get '/cfp/suggestions' do
     @suggestions = Suggestion.order("created_at DESC")
-    haml :cfpsuggestions
+    haml :"cfp/suggestions"
   end
 end

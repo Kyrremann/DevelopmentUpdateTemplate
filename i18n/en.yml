@@ -21,4 +21,7 @@ cfp:
     title: Suggestions for DUT
     content: 
     no-suggestions: There are no suggestions yet.
-  
+  menu:
+    home: Home
+    cfp: Call for Papers
+    suggestions: See suggestions

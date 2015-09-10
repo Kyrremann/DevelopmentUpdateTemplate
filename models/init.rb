@@ -12,3 +12,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_relative 'suggestion'
+require_relative 'configuration'
+require_relative 'track'
+require_relative 'talk'
+require_relative 'comment'
