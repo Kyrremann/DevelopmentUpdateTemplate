@@ -4,23 +4,56 @@
     %title
       = t.title
     = haml :"templates/header_imports"
-    -green = '#821CB4'
-    -purple = '#B3DB11'
   %body
-    = haml :"admin/nav"
-    .container
-      %table{:class => "pure-table"}
-        %thead
-          %tr
-            %th #
-            %th Title
-            %th Room
-            %th date
-            %th Used
-        %tbody
-          - @tracks.each do | track |
-            %tr
-              %th #{track.title}
-              %th #{track.room}
-              %th #{track.date}
-              %th ?
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Add tracks for the chosen event
+          %br
+          - if @errors
+            Errors:
+            %br
+            - @errors.each do | key, value |
+              = key
+              = value
+              %br
+
+          .padding
+          %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+            %label{:for => "title"}
+              Track title:
+            %input#title{:name => "track[title]", :type => "text"}
+
+            %label{:for => "date"}
+              Date:
+            %input#date{:name => "track[date]", :type => "date"}
+
+            %label{:for => "room"}
+              Room:
+            %input#room{:name => "track[room]", :type => "text"}
+
+            %label{:for => "submit"}
+            %button.btn.btn-default{:type => "submit"}
+              Create track
+          .padding
+
+          %table.pure-table
+            %thead
+              %tr
+                %th #
+                %th Title
+                %th Room
+                %th Date
+                %th Used
+                %th
+            %tbody
+              - @tracks.each do | track |
+                %tr
+                  %th #{track.id}
+                  %th #{track.title}
+                  %th #{track.room}
+                  %th #{track.date}
+                  %th ?
+                  %th Delete

@@ -4,26 +4,23 @@
     %title
       = t.title
     = haml :"templates/header_imports"
-    -green = '#821CB4'
-    -purple = '#B3DB11'
   %body
-    = haml :"admin/nav"
-    .container
-      %p
-        = t.admin.content
-      
-      %form.form-horizontal{:method => "post", :role => "form"}
-        %fieldset
-          .control-group
-            %label.control-label{:for => "site_mode"}
-              = t.admin.form.site_mode
-            .controls
-              %select#format.input-xlarge{:name => "config[site_mode]", :style => "width: 100%;"}
+    #layout
+      = haml :"admin/nav"
+      #main
+        %p
+          = t.admin.content
+
+        %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
+          %fieldset
+            .pure-control-group
+              %label{:for => "site_mode"}
+                = t.admin.form.site_mode
+              %select#site_mode{:name => "config[site_mode]", :style => "width: 100%;"}
                 %option{:value => "cfp", :selected => @configurations["site_mode"] == "cfp"} CFP mode
                 %option{:value => "track", :selected => @configurations["site_mode"] == "track"} Track mode
 
-          .control-group
-            %label.control-label{:for => "submit"}
-            .controls
-              %button#submit.btn.btn-default{:name => "submit"}
+            .pure-control-group
+              %label{:for => "submit"}
+              %button#submit.pure-button.pure-button-primay{:name => "submit"}
                 = t.admin.form.submit

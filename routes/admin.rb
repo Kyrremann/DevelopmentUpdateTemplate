@@ -28,7 +28,17 @@ class DUT < Sinatra::Application
   end
 
   post '/admin/suggestions' do
-    p params
+    @track = Track.find_by_title(params["track"])
+    @talk = Talk.new("track_id" => @track.id, )
+    @suggestion = Suggestion.new(params["track"])
+    if @suggestion.save
+      redirect 'admin/suggestions'
+    else
+      @suggestions = Suggestion.order("created_at DESC")
+      @tracks = Track.order("title DESC")
+      @errors =  @suggestion.errors
+      haml :"admin/suggestions"
+    end
     redirect 'admin/suggestions'
   end
 
@@ -38,7 +48,13 @@ class DUT < Sinatra::Application
   end
 
   post '/admin/tracks' do
-    p params
-    redirect 'admin/tracks'
+    @track = Track.new(params["track"])
+    if @track.save
+      redirect 'admin/tracks'
+    else
+      @tracks = Track.order("title DESC")
+      @errors =  @track.errors
+      haml :"admin/tracks"
+    end
   end
 end

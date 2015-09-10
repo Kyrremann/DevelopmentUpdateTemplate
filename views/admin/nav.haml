@@ -1,26 +1,19 @@
-%nav.navbar.navbar-default{:role => "navigation"}
-  .container-fluid
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "/"}
-        = t.title
-    / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "/"}
-            Home
-        %li
-          %a{:href => "/admin"}
-            Admin
-        %li
-          %a{:href => "/admin/tracks"}
-            Tracks
-        %li
-          %a{:href => "/admin/suggestions"}
-            Suggestions
+/ Menu toggle
+%a#menuLink.menu-link{:href => "#menu"}
+  / Hamburger icon
+  %span
+#menu
+  .pure-menu
+    %ul.pure-menu-list
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/"}
+          = t.admin.menu.home
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin"}
+          = t.admin.menu.admin
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/tracks"}
+          = t.admin.menu.tracks
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/admin/suggestions"}
+          = t.admin.menu.suggestions

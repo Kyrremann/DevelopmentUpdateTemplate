@@ -4,47 +4,45 @@
     %title Ciber Developer Update
     = haml :"templates/header_imports"
   %body
-    = haml :"admin/nav"
-    .container
-      %h3
-        Suggestions for CDU 2015 Spring Edition
-      .row
-        - if @suggestions.empty?
-          No suggestions yet
+    #layout
+      = haml :"admin/nav"
+      #main
+        .content
+          %h3
+            Suggestions for CDU 2015 Spring Edition
+          - if @suggestions.empty?
+            No suggestions yet
 
-        - @suggestions.each do | suggestion |
-          %div.suggestion{:style => "background: #eee;"}
-            %strong
-              = suggestion.title
-            %br
-            = suggestion.description.gsub(/\r\n/, "<br>")
-            %br
-            %br
-            %strong Format:
-            = suggestion.format
-            %br
-            %strong Track:
-            = suggestion.track
-            %br
-            %strong Speaker:
-            = suggestion.speaker
-            %br
-            .padding
-            %form.form{:method => "post", :role => "form"}
-              %fieldset
-                %label.control-label{:for => "site_mode"}
+          - @suggestions.each do | suggestion |
+            %div.suggestion{:style => "background: #eee;"}
+              %strong
+                = suggestion.title
+              %br
+              = suggestion.description.gsub(/\r\n/, "<br>")
+              %br
+              %br
+              %strong Format:
+              = suggestion.format
+              %br
+              %strong Track:
+              = suggestion.track
+              %br
+              %strong Speaker:
+              = suggestion.speaker
+              %br
+              %form.form{:method => "post", :role => "form"}
+                %label{:for => "track"}
                   Pick track:
-                %select#format.input-xlarge{:name => "config[site_mode]"}
+                %select#track{:name => "suggestion[track]"}
                   %option{:value => "no_value"} No track
                   - @tracks.each do | track |
                     %option{:value => track.title}
                       = track.title
 
-                %label.control-label{:for => ""}
+                %label{:for => "time"}
                   Set time:
-                  %input{:type => "time"}
+                %input#time{:name => "suggestion[time]", :type => "time"}
 
-                %label.control-label{:for => "submit"}
+                %label{:for => "submit"}
                 %button#submit.btn.btn-default{:name => "submit"}
                   Add to track
-            .padding

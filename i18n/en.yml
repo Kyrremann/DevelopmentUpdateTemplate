@@ -7,6 +7,11 @@ admin:
   form:
     site_mode: 'Site mode:'
     submit: Save
+  menu:
+    home: Home
+    admin: Admin
+    tracks: Tracks
+    suggestions: Suggestions
 
 cfp:
   title: Call for Papers
