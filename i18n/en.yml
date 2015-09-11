@@ -12,6 +12,7 @@ admin:
     admin: Admin
     tracks: Tracks
     suggestions: Suggestions
+    talks: Talks
 
 cfp:
   title: Call for Papers
@@ -30,3 +31,7 @@ cfp:
     home: Home
     cfp: Call for Papers
     suggestions: See suggestions
+
+tracks:
+  menu:
+    home: Home

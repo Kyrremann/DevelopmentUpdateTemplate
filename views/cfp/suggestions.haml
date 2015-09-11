@@ -26,7 +26,7 @@
               = suggestion.format
               %br
               %strong Track:
-              = suggestion.track
+              = Track.find(suggestion.track_id).title
               %br
               %strong Speaker:
               = suggestion.speaker
