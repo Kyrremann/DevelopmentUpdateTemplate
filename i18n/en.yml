@@ -5,11 +5,13 @@ main:
 admin:
   content: Welcome to the admin panel
   form:
-    site_mode: 'Site mode:'
+    site_mode: Site mode
+    event: Event
     submit: Save
   menu:
     home: Home
     admin: Admin
+    events: Events
     tracks: Tracks
     suggestions: Suggestions
     talks: Talks

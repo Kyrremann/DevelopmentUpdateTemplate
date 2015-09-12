@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911204929) do
+ActiveRecord::Schema.define(version: 20150912175549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20150911204929) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.string   "place"
+    t.string   "description"
+    t.string   "cfp_description"
+    t.date     "start_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "suggestions", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -40,11 +50,12 @@ ActiveRecord::Schema.define(version: 20150911204929) do
     t.string   "format"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "track_id"
+    t.integer  "event_id"
+    t.string   "track"
   end
 
   create_table "talks", force: :cascade do |t|
-    t.integer  "track_id"
+    t.integer  "event_id"
     t.string   "title"
     t.string   "description"
     t.string   "speaker"
@@ -52,14 +63,13 @@ ActiveRecord::Schema.define(version: 20150911204929) do
     t.time     "time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "track"
   end
 
-  add_index "talks", ["track_id"], name: "index_talks_on_track_id", using: :btree
+  add_index "talks", ["event_id"], name: "index_talks_on_event_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
     t.string   "title"
-    t.date     "date"
-    t.string   "room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

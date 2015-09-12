@@ -3,50 +3,49 @@
   %head
     %title Ciber Developer Update
     = haml :'templates/header_imports'
-    :javascript
-      $(document).ready(function() {
-        #{get_file('public/js/rateit_module.js')}
+  %body
+    #layout
+      = haml :'track/nav'
+      #main
+        .content
+          %h3
+            Track #{params["track"]}
+          - @talks.each do | talk |
+            - color = '#eee'
+            - if defined? is_now and is_now
+              - color = '#B3DB11'
+
+            %div.track-spot{:style => "background: #{color};"}
+              .toggleDescription
+                %span.label.label-info.pull-right
+                  = talk.time.strftime("%H:%M")
+                %h4{:style => "margin-bottom: 0px;"}
+                  = talk.title
+                %span.speaker
+                  = talk.speaker
+              .slideDescription
+                = talk.description
+
+              #rating
+                Rate (0):
+                .rateit{"data-spotid" => 0, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => 0}
+              .toggleComment
+                Kommenter:
+              .slideComment
+                %form.pure-form{:action => "/comment/#{params["track"]}/#{talk.id}", :method => "post"}
+                  %textarea{:name => "comment[comment]", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar", :rows => "2"}
+                  .form-group
+                    %label{:for => "author"} Navn
+                    %input#author{:name => "comment[author]", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
+                    %button.btn.btn-default{:type => "submit"} Send
+
+  :javascript
+    $(document).ready(function() {
+      #{File.read('public/js/rateit_module.js')}
+      $(".toggleDescription").click(function() {
+        $(this).nextAll('.slideDescription').first().slideToggle();
       });
-  %body#test_el
-    = haml :'track/nav'
-    .container
-      Track #{@track.title} | #{@track.room}
-      %br
-      - @talks.each do | talk |
-        - color = '#eee'
-        - if defined? is_now and is_now
-          - color = '#B3DB11'
-    
-        %div.track-spot{:style => "background: #{color};"}
-          .toggleDescription
-            %span.label.label-info.pull-right
-              = talk.time
-            %h4{:style => "margin-bottom: 0px;"}
-              = talk.title
-          %span.speaker
-            = talk.speaker
-          .slideDescription
-            = talk.description
-
-          #rating
-            Rate (#{get_number_of_ratings_for(value["id"])}):
-            .rateit{"data-spotid" => value["id"], "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => get_rating_for!(value["id"])}
-          .toggleComment
-            Kommenter:
-            .slideComment
-            %form.form-inline{:action => "/track/#{params['track']}/#{value["id"]}", :method => "post", :role => "form"}
-              %textarea{:name => "kommentar", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar"}
-            .form-group
-              %label.sr-only{:for => "navn"} Navn
-              %input#navn.form-control{:name => "navn", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
-              %button.btn.btn-default{:type => "submit"} Send
-
-:javascript
-  $(document).ready(function() {
-    $(".toggleDescription").click(function() {
-      $(this).nextAll('.slideDescription').first().slideToggle();
+      $(".toggleComment").click(function() {
+        $(this).nextAll('.slideComment').first().slideToggle();
+      });
     });
-    $(".toggleComment").click(function() {
-      $(this).nextAll('.slideComment').first().slideToggle();
-    });
-  });

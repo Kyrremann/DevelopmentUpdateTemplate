@@ -1,7 +1,7 @@
 // we bind only to the rateit controls within the products div
 $('#rating .rateit').bind('rated', function(e) {
     var ri = $(this);
-    // if the use pressed reset, it will get value: 0 (to be compatible with the HTML range control), 
+    // if the user pressed reset, it will get value: 0 (to be compatible with the HTML range control), 
     // we could check if e.type == 'reset', and then set the value to  null .
     var value = ri.rateit('value');
     var spotId = ri.data('spotid');

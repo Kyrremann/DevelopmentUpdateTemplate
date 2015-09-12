@@ -21,6 +21,13 @@
                 %option{:value => "track", :selected => @configurations["site_mode"] == "track"} Track mode
 
             .pure-control-group
-              %label{:for => "submit"}
-              %button#submit.pure-button.pure-button-primay{:name => "submit"}
+              %label{:for => "event"}
+                = t.admin.form.event
+              %select#event{:name => "config[event]", :style => "width: 100%;"}
+                - @events.each do | event |
+                  %option{:value => event.id, :selected => @configurations["event"] == event.id.to_s}
+                    = event.title
+
+            .pure-control-group
+              %button.pure-button.pure-button-primay{:name => "submit"}
                 = t.admin.form.submit

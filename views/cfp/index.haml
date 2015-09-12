@@ -13,9 +13,11 @@
         %p
           = t.cfp.content
         %br
-        - @errors.each do | e |
-          = e
-          %br
+        - if @errors
+          - @errors.each do | key, value |
+            = key
+            = value
+            %br
         %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
           %fieldset
             .pure-control-group
@@ -41,11 +43,10 @@
               %label{:for => "track"}
                 = t.cfp.form.track
               %select#selectbasic{:name => "suggestion[track]", :style => "width: 100%;"}
-                %option{:value => "all"} For All
-                %option{:value => "java"} Java
-                %option{:value => "net"} .NET
-                %option{:value => "ux"} UX
-                %option{:value => "other"} Other
+                %option{:value => "no-value"} Pick track
+                - @tracks.each do | track |
+                  %option{:name => track.id}
+                    = track.title
 
             .pure-control-group
               %label{:for => "speaker"}
@@ -53,8 +54,8 @@
               %input#tittel{:name => "suggestion[speaker]", :placeholder => "Speaker", :type => "text", :style => "width: 100%;"}
 
             .pure-control-group
-              %button#submit.pure-button.pure-button-primary{:name => "submit"} Submit
-              %button#cancel.pure-button{:name => "clear", :type => "reset"} clear
+              %button.pure-button.pure-button-primary{:name => "submit"} Submit
+              %button.pure-button{:name => "clear", :type => "reset"} clear
 
             .pure-control-group
               %br

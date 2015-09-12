@@ -1,3 +1,5 @@
 class Suggestion < ActiveRecord::Base
-  validates :title, presence: true
+  belongs_to :event
+
+  validates :title, :description, :speaker, :format, :track, presence: true
 end

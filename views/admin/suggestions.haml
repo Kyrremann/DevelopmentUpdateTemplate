@@ -25,19 +25,19 @@
               = suggestion.format
               %br
               %strong Track:
-              = Track.find(suggestion.track_id).title
+              = suggestion.track
               %br
               %strong Speaker:
               = suggestion.speaker
               %br
-              %form.form{:method => "post", :role => "form"}
+              %form.pure-form{:method => "post", :role => "form"}
                 %input{:name => "id", :value => suggestion.id, :type => "hidden"}
                 %label{:for => "track"}
                   Pick track:
                 %select#track{:name => "track"}
                   %option{:value => "no_value"} No track
                   - @tracks.each do | track |
-                    %option{:value => track.title, :selected => track.id == suggestion.track_id}
+                    %option{:value => track.title, :selected => track.title == suggestion.track}
                       = track.title
 
                 %label{:for => "time"}
@@ -45,4 +45,5 @@
                 %input#time{:name => "time", :type => "time"}
 
                 %button.btn.btn-default{:name => "submit"}
-                  Add to track
+                  Add talk
+            .padding
