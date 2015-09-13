@@ -27,8 +27,10 @@
                 = talk.description
 
               #rating
-                Rate (0):
-                .rateit{"data-spotid" => 0, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => 0}
+                Rate
+                = surround '(', '):' do
+                  = "<span id=\"ratings\">#{talk.ratings.size}</span>"
+                .rateit{"data-spotid" => talk.id, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => talk.rating}
               .toggleComment
                 Kommenter:
               .slideComment

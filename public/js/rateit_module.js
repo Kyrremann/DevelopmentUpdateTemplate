@@ -19,6 +19,7 @@ $('#rating .rateit').bind('rated', function(e) {
         success: function(data) {
             var obj = jQuery.parseJSON(data);
             $('div[data-spotId="' + obj["id"] + '"]').rateit('value', obj["value"]);
+	    $('#ratings')[0].innerHTML = obj["ratings"]
         },
         error: function(jxhr, msg, err) {
             // What TODO here?

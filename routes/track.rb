@@ -16,8 +16,25 @@ class DUT < Sinatra::Application
   end
 
   post '/ajax/rateit' do
-    @rateing
-    p params
-    {"id"=>"0", "value"=>"0"}.to_json
+    @talk = Talk.find(params["id"])
+    if @talk.nil?
+      logger.warn "Couldn't find Talk with id #{params["id"]}"
+      return {
+        "id" => params["id"], 
+        "value" => 0
+      }.to_json
+    end
+
+    unless @talk.has_rated(request.ip)
+      @rating = Rating.new(:talk_id => @talk.id, :vote => params["value"],
+                           :ip => request.ip)
+      @rating.save
+      @talk.ratings.reload
+    end
+    {
+      "id" => @talk.id, 
+      "value" => @talk.rating,
+      "ratings" => @talk.ratings.size
+    }.to_json
   end
 end
