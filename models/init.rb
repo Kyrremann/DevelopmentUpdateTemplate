@@ -1,6 +1,7 @@
 require 'pg'
 
-db = URI.parse('postgres://postgres:dut2015@localhost/dut')
+db_url = ENV['DATABASE_URL'] || 'postgres://postgres:dut2015@localhost/dut'
+db = URI.parse(db_url)
 
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
