@@ -8,6 +8,9 @@ admin:
     site_mode: Site mode
     event: Event
     submit: Save
+    pick-track: Pick track
+    set-time: Set time
+    add-talk: Add talk
   menu:
     home: Home
     admin: Admin
@@ -15,10 +18,16 @@ admin:
     tracks: Tracks
     suggestions: Suggestions
     talks: Talks
+  tracks:
+    title: Title
+    delete: Delete
+    create: Create track
+    add: Add track
 
 cfp:
   title: Call for Papers
   content: DUT kicks off in a couple of months! We are hoping for many great speaches! Of course, this depends on you. Call for Papers is open until Thursday, 30th of April and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten!<br />Submit your speach in the form below.
+  thank-you: Thank you! Your suggestion has been recieved.
   form:
     title: Title
     description: Description
@@ -28,7 +37,7 @@ cfp:
   suggestions:
     title: Suggestions for DUT
     content: 
-    no-suggestions: There are no suggestions yet.
+    empty: There are no suggestions yet.
   menu:
     home: Home
     cfp: Call for Papers
@@ -37,3 +46,12 @@ cfp:
 tracks:
   menu:
     home: Home
+    now: Now
+  rate: Rate
+  comment: Comment:
+  name: Name
+  send: Send
+
+oops:
+  content: Okay...one of us has done something wrong...
+  image-alt: 404 image of Ryan Gosling
