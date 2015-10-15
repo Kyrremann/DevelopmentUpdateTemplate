@@ -37,7 +37,7 @@
               %form.pure-form{:method => "post", :role => "form"}
                 %input{:name => "id", :value => suggestion.id, :type => "hidden"}
                 %label{:for => "track"}
-                  = t.admin.form.pick-track
+                  = t.admin.form.pick_track
                 %select#track{:name => "track"}
                   %option{:value => "no_value"} No track
                   - @tracks.each do | track |
@@ -45,9 +45,9 @@
                       = track.title
 
                 %label{:for => "time"}
-                  = t.admin.form.set-time
+                  = t.admin.form.set_time
                 %input#time{:name => "time", :type => "time"}
 
                 %button.btn.btn-default{:name => "submit"}
-                  = t.admin.form.add-talk
+                  = t.admin.form.add_talk
             .padding

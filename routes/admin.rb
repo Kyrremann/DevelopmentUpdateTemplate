@@ -78,4 +78,8 @@ class DUT < Sinatra::Application
     @talks = Talk.where("event_id = ?", event.value).order("title DESC")
     haml :"admin/talks"
   end
+
+  post '/admin/talks' do
+    # TODO
+  end
 end

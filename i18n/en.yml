@@ -8,9 +8,9 @@ admin:
     site_mode: Site mode
     event: Event
     submit: Save
-    pick-track: Pick track
-    set-time: Set time
-    add-talk: Add talk
+    pick_track: Pick track
+    set_time: Set time
+    add_talk: Add talk
   menu:
     home: Home
     admin: Admin
@@ -23,11 +23,28 @@ admin:
     delete: Delete
     create: Create track
     add: Add track
+  events:
+    new_event: Add a new event!
+    errors: Errors
+    title: Title
+    date: Date
+    place: Place
+    description: Description
+    cfp_description: Call for Paper description
+    create_event: Create event
+  talks:
+    content: Talks for CDU 2015 Spring Edition
+    empty: No talks yet
+    format: Format
+    track: Track
+    time: Time
+    speaker: Speaker
+    delete: Delete
 
 cfp:
   title: Call for Papers
   content: DUT kicks off in a couple of months! We are hoping for many great speaches! Of course, this depends on you. Call for Papers is open until Thursday, 30th of April and we encourage everyone to spend the time well and come up with something you can contribute with. Practice Managers and team leaders will also "remind" you, so that the message is not forgotten!<br />Submit your speach in the form below.
-  thank-you: Thank you! Your suggestion has been recieved.
+  thank_you: Thank you! Your suggestion has been recieved.
   form:
     title: Title
     description: Description
@@ -48,10 +65,10 @@ tracks:
     home: Home
     now: Now
   rate: Rate
-  comment: Comment:
+  comment: Comment
   name: Name
   send: Send
 
 oops:
   content: Okay...one of us has done something wrong...
-  image-alt: 404 image of Ryan Gosling
+  image_alt: 404 image of Ryan Gosling
