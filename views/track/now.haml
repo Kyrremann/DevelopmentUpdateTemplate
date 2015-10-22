@@ -1,31 +1,56 @@
 !!!
 %html
   %head
-    %title Ciber Developer Update
-    = haml :"templates/header_imports"
+    %title
+      = t.title
+    = haml :'header_imports'
+  %body
+    #layout
+      = haml :'track/nav'
+      #main
+        .content
+          %h3
+          - @talks.each do | talk |
+            - color = '#eee'
+            - if defined? is_now and is_now
+              - color = '#B3DB11'
+
+            %div.track-spot{:style => "background: #{color};"}
+              .toggleDescription
+                %span.label.label-info.pull-right
+                  = talk.time.strftime("%H:%M")
+                %h4{:style => "margin-bottom: 0px;"}
+                  = talk.title
+                %span.speaker
+                  = talk.speaker
+              .slideDescription
+                = talk.description
+
+              #rating
+                = t.tracks.rate
+                = surround '(', '):' do
+                  = "<span id=\"ratings\">#{talk.ratings.size}</span>"
+                .rateit{"data-spotid" => talk.id, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => talk.rating}
+              .toggleComment
+                = t.tracks.comment
+              .slideComment
+                %form.pure-form{:action => "/comment/#{params["track"]}/#{talk.id}", :method => "post"}
+                  %textarea{:name => "comment[comment]", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar", :rows => "2"}
+                  .form-group
+                    %label#author
+                      = t.tracks.name
+                    %input#author{:name => "comment[author]", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
+                    %button.btn.btn-default{:type => "submit"}
+                      = t.tracks.submit
+            .padding
+
     :javascript
       $(document).ready(function() {
-        #{get_file("public/js/rateit_module.js")}
+        #{File.read('public/js/rateit_module.js')}
+        $(".toggleDescription").click(function() {
+          $(this).nextAll('.slideDescription').first().slideToggle();
+        });
+        $(".toggleComment").click(function() {
+          $(this).nextAll('.slideComment').first().slideToggle();
+        });
       });
-  %body
-    = haml :"templates/nav"
-    .container
-      - if params.has_key?("starts")
-        Startet #{params["starts"]}
-        %br
-      - params.each do | key, value |
-        - if key != "starts"
-          %h3
-            Track #{key}
-          - key = value["time"]
-          = haml :"templates/track_spot", :locals => {:key => key, :value => value}
-
-:javascript
-  $(document).ready(function() {
-    $(".toggleDescription").click(function() {
-      $(this).nextAll('.slideDescription').first().slideToggle();
-    });
-    $(".toggleComment").click(function() {
-      $(this).nextAll('.slideComment').first().slideToggle();
-    });
-  });

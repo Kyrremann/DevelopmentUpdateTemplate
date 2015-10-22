@@ -10,7 +10,8 @@
       #main
         .content
           %h3
-            Track #{params["track"]}
+            = t.tracks.track
+            = params["track"]
           - @talks.each do | talk |
             - color = '#eee'
             - if defined? is_now and is_now

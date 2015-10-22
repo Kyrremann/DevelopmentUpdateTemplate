@@ -1,6 +1,8 @@
 title: Development Update Template
 main:
   content: Welcome to Development Update Template. Stay a while, and listen!
+  now: Now
+  all: All
 
 admin:
   content: Welcome to the admin panel
@@ -65,11 +67,13 @@ cfp:
 tracks:
   menu:
     home: Home
+    all: All
     now: Now
   rate: Rate
-  comment: Comment
+  comment: 'Comment:'
   name: Name
   submit: Send
+  track: 'Track:'
 
 oops:
   content: Okay...one of us has done something wrong...
