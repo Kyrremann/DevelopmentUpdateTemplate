@@ -4,8 +4,10 @@ class DUT < Sinatra::Application
   end
 
   get '/track/:track' do | track |
-    @tracks = Track.order("title DESC")
-    @talks = Talk.where("track = ?", track)
+    event_id = Configuration.find_by_name("event").value
+    @talks = Talk.where('event_id = ? and track = ?', event_id, track)
+    @tracks = Talk.where('event_id = ?', event_id)
+      .select('track').distinct.map { | talk | talk.track }
     haml :"track/track"
   end
 
