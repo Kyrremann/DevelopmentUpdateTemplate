@@ -92,4 +92,16 @@ class DUT < Sinatra::Application
     end
     redirect 'admin/talks'
   end
+
+  get '/admin/comments' do
+    event_id = Configuration.find_by_name("event").value
+    @comments = Comment.where('event_id = ?', event_id).order('talk_id')
+    haml :"admin/comments"
+  end
+
+  post '/admin/comments' do
+    comment = Comment.find(params[:id])
+    comment.destroy if comment
+    redirect 'admin/comments'
+  end
 end
