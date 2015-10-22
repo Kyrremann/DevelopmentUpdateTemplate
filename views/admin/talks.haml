@@ -41,6 +41,14 @@
               %form.pure-form{:method => "post", :role => "form"}
                 %input{:name => "id", :value => talk.id, :type => "hidden"}
 
+                %label{:for => "track"}
+                  = t.admin.form.pick_track
+                %select#track{:name => "track"}
+                  %option{:value => "no_value"} No track
+                  - @tracks.each do | track |
+                    %option{:value => track.title, :selected => track.title == talk.track}
+                      = track.title
+
                 %label{:for => "time"}
                   = t.admin.form.change_time
                 %input#time{:name => "time", :type => "time", :value => talk.time.strftime("%H:%M")}
