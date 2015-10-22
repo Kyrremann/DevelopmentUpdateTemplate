@@ -67,7 +67,7 @@ tracks:
   rate: Rate
   comment: Comment
   name: Name
-  send: Send
+  submit: Send
 
 oops:
   content: Okay...one of us has done something wrong...

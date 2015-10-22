@@ -2,7 +2,13 @@ class DUT < Sinatra::Application
   get '/' do
     site_mode = Configuration.find_by_name("site_mode")
     if site_mode.value == "track"
-      @tracks = Track.order("title DESC")
+      event_id = Configuration.find_by_name("event").value
+      talks = Talk.where('event_id = ?', event_id)
+      @tracks = Set.new
+      talks.each do | talk |
+        p talk.track
+        @tracks.add(talk.track)
+      end
       haml :index_track
     else
       haml :index_cfp

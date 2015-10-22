@@ -33,7 +33,7 @@
                   = "<span id=\"ratings\">#{talk.ratings.size}</span>"
                 .rateit{"data-spotid" => talk.id, "data-rateit-resetable" => "false", "data-rateit-step" => "1", "data-rateit-value" => talk.rating}
               .toggleComment
-                = t.track.comment
+                = t.tracks.comment
               .slideComment
                 %form.pure-form{:action => "/comment/#{params["track"]}/#{talk.id}", :method => "post"}
                   %textarea{:name => "comment[comment]", :style => "width: 90%;", :placeholder => "Skriv inn en kommentar", :rows => "2"}
@@ -42,7 +42,8 @@
                       = t.tracks.name
                     %input#author{:name => "comment[author]", :placeholder => "Navn", :style => "display: inline-block; margin-bottom: 0px; vertical-align: middle; width: auto;"}
                     %button.btn.btn-default{:type => "submit"}
-                      = t.tracks.send
+                      = t.tracks.submit
+            .padding
 
     :javascript
       $(document).ready(function() {
