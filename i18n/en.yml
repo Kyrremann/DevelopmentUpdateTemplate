@@ -11,6 +11,8 @@ admin:
     pick_track: Pick track
     set_time: Set time
     add_talk: Add talk
+    change_time: Change time
+    change_time_button: Change
   menu:
     home: Home
     admin: Admin

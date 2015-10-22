@@ -80,6 +80,14 @@ class DUT < Sinatra::Application
   end
 
   post '/admin/talks' do
-    # TODO
+    talk = Talk.find(params[:id])
+    redirect 'admin/talks' unless talk
+    if params.has_key?('delete')
+      talk.destroy
+    else
+      talk.time = params['time']
+      talk.save
+    end
+    redirect 'admin/talks'
   end
 end
