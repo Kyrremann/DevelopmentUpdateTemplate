@@ -1,9 +1,11 @@
 class Suggestion < ActiveRecord::Base
   belongs_to :event
 
+  before_create :generate_uuid
+
   validates :title, :description, :speaker, :format, :track, presence: true
 
-  def before_create(suggesion)
-    suggestion.uuid = SecureRandom.uuid
+  def generate_uuid
+    self.uuid = SecureRandom.uuid
   end
 end
