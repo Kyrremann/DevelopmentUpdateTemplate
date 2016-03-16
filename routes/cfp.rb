@@ -1,6 +1,6 @@
 class DUT < Sinatra::Application
   get '/cfp' do
-    @tracks = Track.order("title DESC")
+    @tracks = Track.find_each
     haml :"cfp/index"
   end
 
