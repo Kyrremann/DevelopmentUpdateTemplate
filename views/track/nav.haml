@@ -12,6 +12,9 @@
         %li.pure-menu-item
           %a.pure-menu-link{:href => "/track/#{track}"}
             = track
-      %li
-        %a{:href => "/track/now"}
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/track/all"}
+          = t.tracks.menu.all
+      %li.pure-menu-item
+        %a.pure-menu-link{:href => "/track/now"}
           = t.tracks.menu.now

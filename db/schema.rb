@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160316201516) do
     t.string   "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "event_id",   null: false
   end
 
   add_index "comments", ["talk_id"], name: "index_comments_on_talk_id", using: :btree

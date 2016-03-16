@@ -1,6 +1,8 @@
 title: Development Update Template
 main:
   content: Welcome to Development Update Template. Stay a while, and listen!
+  now: Now
+  all: All
 
 admin:
   content: Welcome to the admin panel
@@ -11,6 +13,8 @@ admin:
     pick_track: Pick track
     set_time: Set time
     add_talk: Add talk
+    change_time: Change time
+    change_time_button: Change
   menu:
     home: Home
     admin: Admin
@@ -18,6 +22,7 @@ admin:
     tracks: Tracks
     suggestions: Suggestions
     talks: Talks
+    comments: Comments
   tracks:
     title: Title
     delete: Delete
@@ -40,6 +45,12 @@ admin:
     time: Time
     speaker: Speaker
     delete: Delete
+  comments:
+    title: Comments
+    talk: 'Talk:'
+    author: 'Author:'
+    comment: 'Comment:'
+    empty: There are no comments, yet...
 
 cfp:
   title: Call for Papers
@@ -63,11 +74,13 @@ cfp:
 tracks:
   menu:
     home: Home
+    all: All
     now: Now
   rate: Rate
-  comment: Comment
+  comment: 'Comment:'
   name: Name
   submit: Send
+  track: 'Track:'
 
 oops:
   content: Okay...one of us has done something wrong...
