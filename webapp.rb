@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 
+require "sinatra/reloader"
+
 require_relative 'config/app_config.rb'
 
 class DUT < Sinatra::Application
@@ -17,7 +19,7 @@ class DUT < Sinatra::Application
   end
 
   configure :development do
-    # ...
+    register Sinatra::Reloader
   end
 end
 

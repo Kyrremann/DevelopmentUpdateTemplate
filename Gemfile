@@ -4,6 +4,7 @@ ruby '2.2.4'
 gem 'thin', '~> 1.6.3'
 gem 'sinatra', '~> 1.4.6'
 gem 'sinatra-r18n', '~> 2.0.4'
+gem 'sinatra-contrib', '~> 1.4', '>= 1.4.6'
 gem 'haml', '~> 4.0.7'
 
 gem 'pg', '~> 0.18.3'

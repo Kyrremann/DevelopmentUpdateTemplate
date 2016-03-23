@@ -15,6 +15,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    backports (3.6.8)
     builder (3.2.2)
     daemons (1.1.9)
     eventmachine (1.0.8)
@@ -23,11 +24,14 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     minitest (5.8.0)
+    multi_json (1.11.2)
     pg (0.18.3)
     r18n-core (2.0.4)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -35,6 +39,13 @@ GEM
     sinatra-activerecord (2.0.8)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    sinatra-contrib (1.4.6)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (>= 1.3, < 3)
     sinatra-r18n (2.0.4)
       r18n-core (= 2.0.4)
       sinatra (>= 1.3)
@@ -56,5 +67,9 @@ DEPENDENCIES
   pg (~> 0.18.3)
   sinatra (~> 1.4.6)
   sinatra-activerecord (~> 2.0.8)
+  sinatra-contrib (~> 1.4, >= 1.4.6)
   sinatra-r18n (~> 2.0.4)
   thin (~> 1.6.3)
+
+BUNDLED WITH
+   1.11.2
