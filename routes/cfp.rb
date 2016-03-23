@@ -31,6 +31,11 @@ class DUT < Sinatra::Application
 
   post '/cfp/suggestions/:uuid/edit' do | uuid |
     @suggestion = Suggestion.find_by_uuid(uuid)
+    if params.has_key?('delete')
+      @suggestion.destroy
+      redirect 'cfp/suggestions'
+    end
+
     @suggestion.update(params[:suggestion])
 
     if @suggestion.save
