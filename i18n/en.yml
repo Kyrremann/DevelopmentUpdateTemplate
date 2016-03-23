@@ -37,6 +37,7 @@ admin:
     description: Description
     cfp_description: Call for Paper description
     create_event: Create event
+    update_event: Update
   talks:
     content: Talks for CDU 2015 Spring Edition
     empty: No talks yet
