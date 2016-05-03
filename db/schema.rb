@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 201605031462286759) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "ratings", ["talk_id"], name: "index_rating_on_talk_id", using: :btree
+  add_index "ratings", ["talk_id"], name: "index_ratings_on_talk_id", using: :btree
 
   create_table "suggestions", force: :cascade do |t|
     t.string   "title"
