@@ -13,7 +13,7 @@ class DUT < Sinatra::Application
       redirect to("cfp/thank-you?uuid=#{@suggestion.uuid}")
     else
       @errors =  @suggestion.errors
-      @tracks = Track.order("title DESC")
+      @tracks = Track.find_each
       haml :"cfp/index"
     end
   end
@@ -43,7 +43,7 @@ class DUT < Sinatra::Application
       redirect 'cfp/suggestions'
     else
       @errors =  @suggestion.errors
-      @tracks = Track.order("title DESC")
+      @tracks = Track.find_each
       haml :"cfp/index"
     end
   end
