@@ -14,10 +14,12 @@
           %p
             = t.cfp.content
           %br
+          = params
           - if @errors
             - @errors.each do | key, value |
-              = key
-              = value
+              %span{:style => "color: red;"}
+                = key
+                = value
               %br
           %form.pure-form.pure-form-stacked{:method => "post", :role => "form"}
             %fieldset
@@ -35,6 +37,7 @@
                 %label{:for => "format"}
                   = t.cfp.form.format
                 %select#format{:name => "suggestion[format]", :style => "width: 100%;"}
+                  %option{:value => "no-value"} Choose format
                   %option{:value => "45 minute talk"} 45 minute talk
                   %option{:value => "10 lightning talk"} 10 lightning talk
                   %option{:value => "workshop"} Workshop
@@ -44,7 +47,7 @@
                 %label{:for => "track"}
                   = t.cfp.form.track
                 %select#selectbasic{:name => "suggestion[track]", :style => "width: 100%;"}
-                  %option{:value => "no-value"} Pick track
+                  %option{:value => "no-value"} Choose track
                   - @tracks.each do | track |
                     %option{:name => track.id}
                       = track.title

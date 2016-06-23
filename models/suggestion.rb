@@ -4,6 +4,7 @@ class Suggestion < ActiveRecord::Base
   before_create :generate_uuid
 
   validates :title, :description, :speaker, :format, :track, presence: true
+  validates :format, :track, exclusion: { in: %w(no-value), message: "is not valid" }
 
   default_scope -> { where('deleted = ?', false) }
 
