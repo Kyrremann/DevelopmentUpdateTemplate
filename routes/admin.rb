@@ -84,6 +84,13 @@ class DUT < Sinatra::Application
     redirect 'admin/tracks'
   end
 
+  get '/admin/tracks/delete' do
+    track = Track.find(params[:id])
+    redirect 'admin/tracks' unless track
+    track.destroy
+    redirect 'admin/tracks'
+  end
+
   get '/admin/talks' do
     event = Configuration.find_by_name("event")
     @talks = Talk.where("event_id = ?", event.value).order("title DESC")

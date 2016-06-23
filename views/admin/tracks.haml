@@ -33,4 +33,5 @@
                 %tr
                   %th #{track.title}
                   %th
-                    = t.admin.tracks.delete
+                    %a{:href => "tracks/delete?id=#{track.id}"}
+                      = t.admin.tracks.delete
