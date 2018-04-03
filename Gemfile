@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.3.6'
 
-gem 'thin', '~> 1.6'
-gem 'sinatra', '~> 1.4'
+gem 'puma', '~> 3.11', '>= 3.11.3'
+gem 'sinatra', '~> 2.0', '>= 2.0.1'
 
-gem 'sinatra-r18n', '~> 2.1'
-gem 'haml', '~> 4.0'
+gem 'sinatra-r18n', '~> 3.0', '>= 3.0.2'
+gem 'haml', '~> 5.0', '>= 5.0.4'
 
-gem 'pg', '~> 0.18'
-gem 'activerecord', '~> 4.2'
-gem 'sinatra-activerecord', '~> 2.0'
+gem 'pg', '~> 1.0'
+gem 'activerecord', '~> 5.1', '>= 5.1.6'
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13'
